@@ -16,19 +16,23 @@ Variables
   --bg-gradient:linear-gradient(180deg, #EBF2FC 0%, #EEF8F9 100%);
   --bg-color-1:hsl(200, 60%, 99%);
   --bg-color-2:#EEEDF1;
+  --toggle-knob-color:hsl(200, 60%, 99%);
+  --toggle-switch-color:#EEEDF1;
   --icon-stroke-color:hsl(0, 0%, 78%);
+  --hover-text-color:hsl(200, 60%, 99%);
   --text-color: hsl(227, 75%, 14%);
 --red:hsl(3, 77%, 44%);
 --border-color:hsl(3, 71%, 56%);
 
---heading-large:3.2rem;
---heading-medium:2rem;
---text-size-large:1.8rem;
+ --heading-large: clamp(2.4rem, 1.6rem + 2.5vw, 3.2rem);   /* 24px → 32px */
+  --heading-medium: clamp(1.6rem, 1.4rem + 1vw, 2rem);      /* 16px → 20px */
 
---text-size-regular:1.6rem;
---text-size-medium:1.25rem;
---text-size-regular:1.125rem;
---text-size-small:1rem;
+  /* Body text */
+  --text-size-large: clamp(1.4rem, 1.2rem + 1vw, 1.8rem);   /* 14px → 18px */
+  --text-size-regular: clamp(1.2rem, 1.0rem + 0.9vw, 1.6rem); /* 12px → 16px */
+  --text-size-medium: clamp(1.2rem, 1.1rem + 0.5vw, 1.25rem); /* 12px → 12.5px */
+  --text-size-regular-alt: clamp(1rem, 0.9rem + 0.4vw, 1.125rem); /* 10px → 11.25px */
+  --text-size-small: clamp(0.9rem, 0.8rem + 0.3vw, 1rem);   /* 9px → 10px */
 
 --spacing-large:6rem; /* 60px */
 --spacing-medium: 3.2rem; /* 32px */
@@ -43,12 +47,19 @@ Variables
 
 .dark-mode{
 --bg-gradient: linear-gradient(180deg, #040918 0%, #091540 100%);
-  --bg-color-2:hsl(225, 23%, 24%);
-  --bg-color-1: ;
+--bg-color-1: #1F2535;
+--bg-color-2:hsl(225, 23%, 24%);
+--icon-stroke-color:hsl(0, 0%, 78%);
+--toggle-knob-color:hsl(200, 60%, 99%);
+--toggle-switch-color: hsl(224, 12%, 36%);
+--hover-text-color:hsl(227, 75%, 14%);
 
   --text-color: hsl(200, 60%, 99%);
 --red:hsl(3, 86%, 64%);
 --border-color:hsl(3, 86%, 64%)
+  
+--red:hsl(3, 77%, 44%);
+--border-color:hsl(3, 71%, 56%);
 }
 
 /* || RESETS */
@@ -122,7 +133,7 @@ header{
 }
 
 
-#theme-toggle{
+#theme-toggle {
   background-color: var(--bg-color-2);
   width: 40px;
   height: 40px;
@@ -152,6 +163,8 @@ fill: none;
 
 /* SECTION 2 */
 #introduction-section{
+   width: 90%;
+   margin-inline:auto;
   margin-bottom: var(--spacing-medium);
 
 }
@@ -165,15 +178,17 @@ fill: none;
   display: flex;
   justify-content: space-around;
   width: 80%;
+  max-width: 300px;
   margin-inline: auto;
 }
 
 .user-controls button{
   font-size: var(--text-size-large);
-  width: fit-content;
+min-width: 70px;
   height: 50px;
   background-color: var(--bg-color-1);
-padding:  5%;
+  border: .5px solid var(--icon-stroke-color);
+padding:  var(--spacing-small) var(--spacing-regular);
 border-radius: var(--border-radius-2);
 display: flex;
 align-items: center;
@@ -192,6 +207,7 @@ color: var(--text-color);
 .extension-list-item{
   background-color: var(--bg-color-1);
   width: 90%;
+  max-width: 450px;
   margin-inline: auto;
   border-radius: var(--border-radius);
   display: flex;
@@ -218,9 +234,10 @@ display: flex;
 justify-content: center;
 align-items: center;
 border-radius: var(--border-radius-2);
-border: .5px solid var(--text-color);
+border: .5px solid var(--icon-stroke-color);
 box-shadow: .25px .25px , -.25px -.25px;
 color: var(--text-color);
+
 }
 
 #input-toggle-switch{
@@ -231,7 +248,7 @@ color: var(--text-color);
   position: relative;
   width: 45px;
   height: 25px;
-  background-color: var(--bg-color-2);
+  background-color: var(--toggle-switch-color);
   border-radius: 24px;
 
   transition:  all .3s;
@@ -240,7 +257,7 @@ color: var(--text-color);
 
 #input-toggle-switch::after{
   content: "";
-  background-color: var(--bg-color-1);
+  background-color: var(--toggle-knob-color);
 
   position: absolute;
   width: 20px;
@@ -262,6 +279,20 @@ color: var(--text-color);
   left: 50%;
 }
 
+
+/*  uUTILITY CLASSES */
+.user-controls button.red {
+  background-color: var(--red);
+  color: var(--hover-text-color);
+  &:hover{
+  background-color: var(--bg-color-1);
+  color: var(--text-color);
+  }
+}
+
+.user-controls button.default-background-color{
+  background-color: var(--bg-color-1);
+}
 
 /*
 ===========
@@ -301,7 +332,26 @@ BACKGROUND/IMAGES/COLORS
 ACTIVE-STATES
 =============
 */
+#remove-btn:hover, #user-control-all:hover{
+  background-color: var(--red);
+  color: var(--hover-text-color);
+  border: 0px       ;
 
+}
+
+#user-control-active:hover, #user-control-inactive:hover {
+background-color:var(--bg-color-2);
+border: 0px;
+}
+
+button{
+  transition: all .2s;
+
+}
+
+input:focus, button:focus, #remove-btn:focus, #input-toggle-switch:focus{
+ outline: 2px solid var(--red);
+}
 
 /*
 =====================================
@@ -313,10 +363,35 @@ LARGE SCREENS
 @media only screen and (max-width: 600px){}
 
 /* Small devices (portrait tablets and large phones, 600px and up) */
-@media only screen and (min-width: 600px){}
+@media only screen and (min-width: 600px){
+  #extension-list-items{
+grid-template-columns: repeat(auto-fill,minmax(350px,1fr))
+}
+
+
+}
 
 /* Medium devices (landscape tablets, 768px and up) */
-@media only screen and (min-width: 768px){}
+@media only screen and (min-width: 768px){
+  #introduction-section{
+   
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+#introduction-section h2{
+  margin-bottom: 0;
+  width: 40%;
+  text-align: left;
+  height: 100%;
+
+}
+  #introduction-section .user-controls{
+  width: 40%;
+  max-width: 300px;
+  margin-inline: 0;
+}
+}
 
 /* Large devices (laptops/desktops, 992px and up) */
 @media only screen and (min-width: 992px){}

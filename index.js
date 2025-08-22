@@ -42,7 +42,8 @@ function loadData() {
 			</div>
 			</div>
 			<div class="bottom">
-			<button id="remove-btn" type="button">Remove</button>
+			<button onclick ="handleRemove(event)"
+			id="remove-btn" type="button">Remove</button>
 			<input id="input-toggle-switch" type="checkbox" data-is-active = ${item.isActive} />
 			</div>`;
 
@@ -71,19 +72,31 @@ function disableDarkMode() {
 function handleThemeSwitch() {
 	isDarkMode = localStorage.getItem("isDarkMode");
 	isDarkMode === "active" ? disableDarkMode() : enableDarkMode();
-	console.log("Theme Switch Handler");
 }
 
-function handleHandleAllBtnEvent() {
+function changeBackground() {
+	let buttons = document.querySelectorAll(".user-control-btn");
+	console.log(buttons);
+	buttons.forEach((button) => {
+		button.classList.remove("red");
+	});
+}
+
+function handleHandleAllBtnEvent(event) {
 	let inputItems = extensionListItemsContainer.querySelectorAll(
 		"input[type='checkBox']"
 	);
+
+	event.target.classList.add("red");
 
 	inputItems.forEach((item) => {
 		item.parentElement.parentElement.style.display = "flex";
 	});
 }
-function handleHandleActiveBtnEvent() {
+function handleHandleActiveBtnEvent(event) {
+	// change button bgc
+	changeBackground();
+	event.target.classList.add("red");
 	//search dom for element which have their isActive state set to false
 	let inputItems = extensionListItemsContainer.querySelectorAll(
 		"input[type='checkBox']"
@@ -96,10 +109,14 @@ function handleHandleActiveBtnEvent() {
 			item.parentElement.parentElement.style.display = "flex";
 		}
 	});
-
-	console.log(inActiveItems);
 }
-function handleHandleInActiveBtnEvent() {
+function handleHandleInActiveBtnEvent(event) {
+	// change button bgc
+	changeBackground();
+	event.target.classList.add("red");
+
+	event.target.classList.add("red");
+
 	let inputItems = extensionListItemsContainer.querySelectorAll(
 		"input[type='checkBox']"
 	);
@@ -111,7 +128,13 @@ function handleHandleInActiveBtnEvent() {
 			item.parentElement.parentElement.style.display = "flex";
 		}
 	});
-	console.log("In Active Btn Clicked");
+}
+
+function handleRemove(event) {
+	changeBackground();
+
+	//remove parent article element
+	event.target.parentElement.parentElement.remove();
 }
 
 toggleBtn.addEventListener("click", handleThemeSwitch);
