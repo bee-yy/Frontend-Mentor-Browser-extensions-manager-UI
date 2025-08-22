@@ -117,7 +117,7 @@ body{
   background: var(--bg-gradient);
   color: var(--text-color);
   font-family: "Noto Sans", sans-serif;  
-  padding: 10% 2%
+  padding: 10% 4%
 }
 
 /* HEADER */
@@ -206,7 +206,7 @@ color: var(--text-color);
  }
 .extension-list-item{
   background-color: var(--bg-color-1);
-  width: 90%;
+  /* width: 90%; */
   max-width: 450px;
   margin-inline: auto;
   border-radius: var(--border-radius);
@@ -365,16 +365,26 @@ LARGE SCREENS
 /* Small devices (portrait tablets and large phones, 600px and up) */
 @media only screen and (min-width: 600px){
   #extension-list-items{
-grid-template-columns: repeat(auto-fill,minmax(350px,1fr))
+    width: 100%;
+grid-template-columns: repeat(auto-fill,minmax(350px,1fr));
+justify-content: space-between;
 }
-
+ #extension-list-item{
+width: 100%;
+ }
 
 }
 
 /* Medium devices (landscape tablets, 768px and up) */
 @media only screen and (min-width: 768px){
+  body{
+  padding: 2% 10%
+}
+header,#introduction-section,#extension-list-items{
+  max-width: 100%;
+width: 100%;
+}
   #introduction-section{
-   
     display: flex;
     justify-content: space-between;
     align-items: center;
