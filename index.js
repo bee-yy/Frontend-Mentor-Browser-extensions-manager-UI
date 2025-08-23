@@ -35,7 +35,7 @@ function loadData() {
 			<img src="${item.logo}" alt="${item.name}" />
 			
 			<div class="text">
-			<h4>${item.name}</h4>
+			<h2>${item.name}</h2>
 			<p>
 			${item.description}
 			</p>
@@ -44,7 +44,8 @@ function loadData() {
 			<div class="bottom">
 			<button onclick ="handleRemove(event)"
 			id="remove-btn" type="button">Remove</button>
-			<input id="input-toggle-switch" type="checkbox" data-is-active = ${item.isActive} />
+			<input id="input-toggle-switch" 
+			role ="switch" aria-label="Extension use toggle" type="checkbox" data-is-active = ${item.isActive} />
 			</div>`;
 
 				extensionListItemsContainer.append(article);

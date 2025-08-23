@@ -169,7 +169,7 @@ fill: none;
 
 }
 
-#introduction-section h2{
+#introduction-section h1{
   margin-bottom: 1.6rem;
 }
 
@@ -303,13 +303,13 @@ body{
   font-size: var(--text-size-regular);
 }
 
-h2{
+h1{
   font-size: var(--heading-large);
   text-align: center;
   font-weight: 700;
 }
 
-h4{
+h2{
   font-size: var(--heading-medium);
   font-weight: 500;
 }
@@ -389,7 +389,7 @@ width: 100%;
     justify-content: space-between;
     align-items: center;
   }
-#introduction-section h2{
+#introduction-section h1{
   margin-bottom: 0;
   width: 40%;
   text-align: left;

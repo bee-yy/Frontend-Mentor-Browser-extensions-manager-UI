@@ -52,6 +52,7 @@
 			<button id="theme-toggle">
 				<svg
 					id="toggle-svg"
+					aria-label="toggle light and dark theme"
 					xmlns="http://www.w3.org/2000/svg"
 					width="22"
 					height="22"
@@ -97,37 +98,38 @@
 
 		<!-- If you plan to use the JSON file to populate the data dynamically, you can delete the content below -->
 		<!-- HEADINGS -->
-		<section id="introduction-section">
-			<h2>Extensions List</h2>
+		<main>
+			<section id="introduction-section">
+				<h1>Extensions List</h1>
 
-			<div class="user-controls">
-				<button
-					id="user-control-all"
-					class="user-control-btn"
-					type="button"
-				>
-					All
-				</button>
-				<button
-					id="user-control-active"
-					class="user-control-btn"
-					type="button"
-				>
-					Active
-				</button>
-				<button
-					id="user-control-inactive"
-					class="user-control-btn"
-					type="button"
-				>
-					Inactive
-				</button>
-			</div>
-		</section>
+				<div class="user-controls">
+					<button
+						id="user-control-all"
+						class="user-control-btn"
+						type="button"
+					>
+						All
+					</button>
+					<button
+						id="user-control-active"
+						class="user-control-btn"
+						type="button"
+					>
+						Active
+					</button>
+					<button
+						id="user-control-inactive"
+						class="user-control-btn"
+						type="button"
+					>
+						Inactive
+					</button>
+				</div>
+			</section>
 
-		<!-- EXTENSION LIST ITEMS -->
-		<section id="extension-list-items">
-			<!-- <article class="extension-list-item">
+			<!-- EXTENSION LIST ITEMS -->
+			<section id="extension-list-items">
+				<!-- <article class="extension-list-item">
 				<div class="top">
 					<img src="./assets/images/logo-devlens.svg" alt="" />
 
@@ -144,6 +146,7 @@
 					<input id="input-toggle-switch" type="checkbox" />
 				</div>
 			</article> -->
-		</section>
+			</section>
+		</main>
 	</body>
 </html>
